@@ -1,0 +1,134 @@
+$shadow: (10px 10px 19px -4px rgba(255, 255, 255, 0.75));
+$general-padding: 16;
+$colorlinkOne: red;
+$colorlinkTwo: blue;
+
+
+
+@function set-link-text-color($color) {
+  @if ($color=="red") {
+    @return $colorlinkOne;
+  }
+
+  @else {
+    @return $colorlinkTwo;
+  }
+}
+
+
+@mixin box-shadow ($shadowValue) {
+  box-shadow: $shadowValue;
+  -webkit-box-shadow: $shadowValue;
+  -moz-box-shadow: $shadowValue;
+}
+
+body {
+  font: 100% "Space Mono", monospace;
+  color: $color;
+  margin: 0px;
+  padding: #{$general-padding*0}px;
+  background-color: #f1f194;
+
+}
+
+#redblue {
+  position: relative;
+  margin: 10px auto;
+  text-align: center;
+
+  a {
+    //color: set-link-text-color($color);
+    color: $buttonColor;
+    width: 50%;
+
+  }
+}
+
+
+article {
+  display: flex;
+  flex-wrap: wrap;
+
+  section {
+    @include box-shadow($shadow);
+    flex-grow: 1;
+    flex-basis: 45%;
+    border: 1px silver solid;
+    padding: #{$general-padding}px;
+    margin: 16px;
+    clear: both;
+    overflow: auto;
+    box-sizing: border-box;
+  }
+
+  section#selling-points {
+    flex-grow: 2;
+    flex-basis: 100%;
+  }
+
+  pre {
+    background-color: #f1f194;
+    border: 1px solid #ddd;
+    color: #666;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: #{$general-padding}px;
+    display: block;
+    white-space: pre-wrap;
+  }
+
+  pre.before {
+    float: left;
+    width: 40%;
+  }
+
+  pre.after {
+    float: right;
+    width: 40%;
+  }
+}
+
+h1,
+h2,
+h6 {
+  color: $color;
+}
+
+h1 {
+  text-align: center;
+}
+
+h6 {
+  text-align: center;
+  font-size: 2em;
+  padding: #{$general-padding*2}px;
+  margin-bottom: 0px;
+}
+
+.message {
+  border: 1px solid #ccc;
+  padding: #{$general-padding}px;
+  margin: 16px;
+  color: #2748b3;
+  background-color: #000;
+
+}
+
+.success {
+  @extend .message;
+  background-color: green;
+}
+
+.error {
+  @extend .message;
+  background-color: red;
+}
+
+.warning {
+  @extend .message;
+  background-color: orange;
+}
